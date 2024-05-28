@@ -1,19 +1,19 @@
 package com.javapractice;
 
-import java.time.Year;
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
-        //Program to get user input from command line
-        Scanner Sc = new Scanner(System.in);
-        System.out.print("Enter Your Name\t");
-        String UserName = Sc.nextLine();
-        System.out.println("You are " + UserName);
+        //Program to find the largest number among the given three
+        int LargestNumber = largestFromThree(4, 5, 3);
+        System.out.println("The largest among three is " + LargestNumber);
+    }
 
-        System.out.print("Enter Your Age\t");
-        int UserAge = Sc.nextInt();
-        int UserBornYear = Year.now().getValue() - UserAge;
-        System.out.println("You were born in " + UserBornYear);
+    public static int largestFromThree(int a, int b, int c) {
+        if (a > b) {
+            if (a > c) return a;
+            else return c;
+        } else {
+            if (b > c) return b;
+            else return c;
+        }
     }
 }
