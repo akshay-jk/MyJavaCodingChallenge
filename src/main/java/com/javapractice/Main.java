@@ -4,14 +4,21 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        //Program to find the parity of the input
+
+        //Program to verify the input is prime
         Scanner Inp = new Scanner(System.in);
         System.out.print("Enter the number\t");
+
         int NumberToBeChecked = Inp.nextInt();
-        Main.checkParity(NumberToBeChecked);
+        System.out.println(NumberToBeChecked + " is " + (isPrimeNumber(NumberToBeChecked) ? "a" : "not") + " prime number");
     }
 
-    public static void checkParity(int num) {
-        System.out.println(num + " is an " + (num % 2 == 0 ? "EVEN" : "ODD") + " number");
+    //Function that contains the logic
+    public static boolean isPrimeNumber(int num) {
+        if (num < 1) return false;
+        for (int i = 1; i < num; i++) {
+            if (i != 1 && num % i == 0) return false;
+        }
+        return true;
     }
 }
