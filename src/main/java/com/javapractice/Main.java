@@ -12,27 +12,33 @@ public class Main {
         //Obtaining limit from user
         int UserInput = Inp.nextInt();
 
-        //Obtaining the result using normal function
-        int FactorialValue01 = findFactorial(UserInput);
-        System.out.println(FactorialValue01 + " is the factorial of " + UserInput + ". (Normal Method Computation)");
+        //Obtaining the result using normal function call
+        System.out.println(UserInput + " is " + (isNeonNumber(UserInput) ? "a" : "not a") + " neon number");
 
-        //Obtaining the result using recursive function
-        int FactorialValue02 = findFactorialByRecursion(UserInput);
-        System.out.println(FactorialValue02 + " is the factorial of " + UserInput + ". (Recursive Method Computation)");
     }
 
-    //Function that contains the logic
-    public static int findFactorial(int num) {
-        if (num == 0 || num == 1) return 1;
-
-        int factorialNum = 1;
-        for (int i = num; i > 1; --i) factorialNum *= i;
-        return factorialNum;
+    //Function to check neon number
+    public static boolean isNeonNumber(int num) {
+        int squareOfNumber = doSquare(num);
+        int sumOfSquaredNumber = doAddDigits(squareOfNumber);
+        if (num == sumOfSquaredNumber) return true;
+        return false;
     }
 
-    //Function that contains the logic using recursion.
-    public static int findFactorialByRecursion(int num) {
-        if (num == 0 || num == 1) return 1;
-        else return num * findFactorialByRecursion(num - 1);
+    //Function that return the square
+    public static int doSquare(int num) {
+        return (int) Math.pow(num, 2);
+    }
+
+    //Function that sums all the digits
+    public static int doAddDigits(int num) {
+        int inputNumber = num;
+        int sumOfDigits = 0;
+
+        while (inputNumber != 0) {
+            sumOfDigits += (inputNumber % 10);
+            inputNumber = inputNumber / 10;
+        }
+        return sumOfDigits;
     }
 }
