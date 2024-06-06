@@ -5,24 +5,40 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner Inp = new Scanner(System.in);
-        System.out.print("Enter the text\t");
 
+        System.out.print("Enter the Principle Amount\t");
         //Obtaining text from user
-        String UserInput = Inp.nextLine();
+        int PrincipleAmount = Inp.nextInt();
+
+        System.out.print("Enter the Rate\t");
+        int Rate = Inp.nextInt();
+
+        System.out.print("Enter the Tenure\t");
+        int Tenure = Inp.nextInt();
+
+        System.out.println();
 
         //Obtaining the result using normal function call
-        System.out.println("The entered text is " + (isPalindrome(UserInput) ? "a" : "not a") + " palindrome");
+        double SimpleInterest = doCalculateSimpleInterest(PrincipleAmount, Rate, Tenure);
+        double CompoundInterest = doCalculateCompoundInterest(PrincipleAmount, Rate, Tenure);
+
+        System.out.println("Simple Interest : " + SimpleInterest);
+        System.out.println("Total Repayment : " + (SimpleInterest + PrincipleAmount));
+
+        System.out.println();
+
+        System.out.println("Compound Interest : " + CompoundInterest);
+        System.out.println("Total Repayment : " + (CompoundInterest + PrincipleAmount));
 
     }
 
-    public static boolean isPalindrome(String Str) {
-        String InpCleaned = Str.replace(" ", "");
-        String InpReveresed = "";
-        for (int i = InpCleaned.length() - 1; i > -1; --i) {
-            InpReveresed = InpReveresed + InpCleaned.charAt(i);
-        }
+    // Function for Calculating Simple Interest
+    public static double doCalculateSimpleInterest(int amount, double rate, int tenure) {
+        return (amount * rate * tenure) / 100;
+    }
 
-        if (InpCleaned.equals(InpReveresed)) return true;
-        return false;
+    // Function for Calculating Compound Interest
+    public static double doCalculateCompoundInterest(int amount, double rate, int tenure) {
+        return (amount * Math.pow((1 + ((rate / 100) / 12)), (12 * tenure))) - amount;
     }
 }
