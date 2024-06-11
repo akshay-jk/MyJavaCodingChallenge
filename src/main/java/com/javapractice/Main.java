@@ -2,32 +2,31 @@ package com.javapractice;
 
 import java.util.Scanner;
 
+import com.javapractice.ComplexNumber;
+
 public class Main {
     public static void main(String[] args) {
         Scanner Inp = new Scanner(System.in);
 
-        // Reading length
-        System.out.print("Enter the length\t");
-        int length = Inp.nextInt();
+        System.out.print("Enter the real part of first number\t");
+        int firstRealPart = Inp.nextInt();
 
-        // Reading breadth
-        System.out.print("Enter the breadth\t");
-        int breadth = Inp.nextInt();
+        System.out.print("Enter the imaginary part of first number\t");
+        int firstImaginaryPart = Inp.nextInt();
 
-        // Checking type of quadrilateral
-        String Quadrilateral = (length == breadth ? "Square" : "Rectangle");
+        ComplexNumber CompNum = new ComplexNumber(firstRealPart, firstImaginaryPart);
 
-        // Printing Area
-        System.out.println("The Area of " + Quadrilateral + " is " + doCalculateArea(length, breadth));
-        // Printing Perimeter
-        System.out.println("The Perimeter of " + Quadrilateral + " is " + doCalculatePerimeter(length, breadth));
-    }
+        System.out.print("Enter the real part of second number\t");
+        int secondRealPart = Inp.nextInt();
 
-    public static int doCalculatePerimeter(int length, int breadth) {
-        return 2 * (length + breadth);
-    }
+        CompNum.addRealPart(secondRealPart);
 
-    public static int doCalculateArea(int length, int breadth) {
-        return length * breadth;
+        System.out.print("Enter the imaginary part of second number\t");
+        int secondImaginaryPart = Inp.nextInt();
+
+        CompNum.addImaginaryPart(secondImaginaryPart);
+
+        CompNum.printDetails();
+
     }
 }
