@@ -6,26 +6,18 @@ public class Main {
     public static void main(String[] args) {
         Scanner Inp = new Scanner(System.in);
 
-        System.out.print("Enter the year\t");
-        int year = Inp.nextInt();
+        System.out.print("Enter the char\t");
+        char ch = Inp.next().charAt(0);
 
-        System.out.println(year + " is " + (checkIsLeapYear(year) ? " a" : " not a") + " leap year");
+        System.out.println("Input is a " + (isVowel(ch) ? "VOWEL" : "CONSONANT"));
 
     }
 
-    public static boolean checkIsLeapYear(int year) {
-        if (year % 4 == 0) {
-            if (year % 100 == 0) {
-                if (year % 400 == 0) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
+    public static boolean isVowel(char CharInp) {
+        char[] VowelArray = {'a', 'e', 'i', 'o', 'u'};
+        for (char ch : VowelArray)
+            if (CharInp == ch)
                 return true;
-            }
-        } else {
-            return false;
-        }
+        return false;
     }
 }
