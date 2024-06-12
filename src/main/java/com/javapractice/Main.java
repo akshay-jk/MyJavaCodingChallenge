@@ -2,31 +2,30 @@ package com.javapractice;
 
 import java.util.Scanner;
 
-import com.javapractice.ComplexNumber;
-
 public class Main {
     public static void main(String[] args) {
         Scanner Inp = new Scanner(System.in);
 
-        System.out.print("Enter the real part of first number\t");
-        int firstRealPart = Inp.nextInt();
+        System.out.print("Enter the year\t");
+        int year = Inp.nextInt();
 
-        System.out.print("Enter the imaginary part of first number\t");
-        int firstImaginaryPart = Inp.nextInt();
+        System.out.println(year + " is " + (checkIsLeapYear(year) ? " a" : " not a") + " leap year");
 
-        ComplexNumber CompNum = new ComplexNumber(firstRealPart, firstImaginaryPart);
+    }
 
-        System.out.print("Enter the real part of second number\t");
-        int secondRealPart = Inp.nextInt();
-
-        CompNum.addRealPart(secondRealPart);
-
-        System.out.print("Enter the imaginary part of second number\t");
-        int secondImaginaryPart = Inp.nextInt();
-
-        CompNum.addImaginaryPart(secondImaginaryPart);
-
-        CompNum.printDetails();
-
+    public static boolean checkIsLeapYear(int year) {
+        if (year % 4 == 0) {
+            if (year % 100 == 0) {
+                if (year % 400 == 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
     }
 }
