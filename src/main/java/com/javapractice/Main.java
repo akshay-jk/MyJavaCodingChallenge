@@ -2,22 +2,22 @@ package com.javapractice;
 
 import java.util.Scanner;
 
+import com.javapractice.SwapNumber;
+
 public class Main {
     public static void main(String[] args) {
         Scanner Inp = new Scanner(System.in);
 
-        System.out.print("Enter the char\t");
-        char ch = Inp.next().charAt(0);
+        System.out.print("Enter the first number\t");
+        int NumOne = Inp.nextInt();
 
-        System.out.println("Input is a " + (isVowel(ch) ? "VOWEL" : "CONSONANT"));
+        System.out.print("Enter the second number\t");
+        int NumTwo = Inp.nextInt();
 
-    }
+        SwapNumber swapClass = new SwapNumber(NumOne, NumTwo);
 
-    public static boolean isVowel(char CharInp) {
-        char[] VowelArray = {'a', 'e', 'i', 'o', 'u'};
-        for (char ch : VowelArray)
-            if (CharInp == ch)
-                return true;
-        return false;
+        System.out.println("Before swapping, A is " + swapClass.getNumberOne() + ", B is " + swapClass.getNumberTwo());
+        swapClass.doSwapNumbers();
+        System.out.println("After swapping, A is " + swapClass.getNumberOne() + ", B is " + swapClass.getNumberTwo());
     }
 }
