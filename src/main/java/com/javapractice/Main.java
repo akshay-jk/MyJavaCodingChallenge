@@ -13,6 +13,8 @@ public class Main {
     }
 
     public static void doPrintNaturalNumbers(int limit) {
-        for (int i = 1; i <= limit; i++) System.out.print(i + " ");
+        if (limit > 1)
+            doPrintNaturalNumbers(limit - 1);
+        System.out.println(limit);
     }
 }
