@@ -9,12 +9,12 @@ public class Main {
         System.out.print("Enter the limit\t");
         int limit = Inp.nextInt();
 
-        doPrintNaturalNumbers(limit);
+        doPrintNaturalNumbersByDescOrder(limit);
     }
 
-    public static void doPrintNaturalNumbers(int limit) {
-        if (limit > 1)
-            doPrintNaturalNumbers(limit - 1);
+    public static void doPrintNaturalNumbersByDescOrder(int limit) {
         System.out.println(limit);
+        if (limit > 1)
+            doPrintNaturalNumbersByDescOrder(limit - 1);
     }
 }
