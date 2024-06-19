@@ -1,46 +1,36 @@
 package com.javapractice;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner Inp = new Scanner(System.in);
 
-        System.out.print("Enter the first number\t");
-        int NumOne = Inp.nextInt();
+        System.out.print("Enter the limit\t");
+        int limit = Inp.nextInt();
 
-        System.out.print("Enter the second number\t");
-        int NumTwo = Inp.nextInt();
-
-        int HighestCommonFactor = findHighestCommonFactor(NumOne, NumTwo);
-        int LowestCommonMultiple = findLowestCommonMultiple(NumOne, NumTwo);
-
-        System.out.println("The highest common factor is " + HighestCommonFactor);
-        System.out.println("The lowest common multiple is " + LowestCommonMultiple);
+        ArrayList<Integer> FibonacciSeries = printFibonacciSeries(limit);
+        System.out.println(FibonacciSeries);
 
     }
 
-    public static int findHighestCommonFactor(int NumOne, int NumTwo) {
-        int ExpectedValue = Math.min(NumOne, NumTwo);
-        while (ExpectedValue > 0) {
-            if (NumOne % ExpectedValue == 0 && NumTwo % ExpectedValue == 0)
-                break;
-            ExpectedValue--;
+    public static ArrayList<Integer> printFibonacciSeries(int limit) {
+        ArrayList<Integer> resultArray = new ArrayList<Integer>();
+        int PreviousValue = 0, PresentValue = 1;
+
+        while (resultArray.size() < limit) {
+            if (resultArray.isEmpty()) {
+                resultArray.add(PreviousValue);
+                resultArray.add(PresentValue);
+            } else {
+                int NextValue = PreviousValue + PresentValue;
+                PreviousValue = PresentValue;
+                PresentValue = NextValue;
+                resultArray.add(PresentValue);
+            }
         }
-        return ExpectedValue;
-    }
 
-    public static int findLowestCommonMultiple(int NumOne, int NumTwo) {
-        int ExpectedValue = Math.max(NumOne, NumTwo);
-        while (ExpectedValue <= findProduct(NumOne, NumTwo)) {
-            if (ExpectedValue % NumOne == 0 && ExpectedValue % NumTwo == 0)
-                break;
-            ExpectedValue++;
-        }
-        return ExpectedValue;
-    }
-
-    public static int findProduct(int NumOne, int NumTwo) {
-        return NumOne * NumTwo;
+        return resultArray;
     }
 }
