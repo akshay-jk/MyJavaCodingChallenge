@@ -1,6 +1,5 @@
 package com.javapractice;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -10,27 +9,13 @@ public class Main {
         System.out.print("Enter the limit\t");
         int limit = Inp.nextInt();
 
-        ArrayList<Integer> FibonacciSeries = printFibonacciSeries(limit);
-        System.out.println(FibonacciSeries);
+        printRightTriangle(limit);
 
     }
 
-    public static ArrayList<Integer> printFibonacciSeries(int limit) {
-        ArrayList<Integer> resultArray = new ArrayList<Integer>();
-        int PreviousValue = 0, PresentValue = 1;
-
-        while (resultArray.size() < limit) {
-            if (resultArray.isEmpty()) {
-                resultArray.add(PreviousValue);
-                resultArray.add(PresentValue);
-            } else {
-                int NextValue = PreviousValue + PresentValue;
-                PreviousValue = PresentValue;
-                PresentValue = NextValue;
-                resultArray.add(PresentValue);
-            }
+    public static void printRightTriangle(int triangleHeight) {
+        for (int i = 0; i < triangleHeight; i++) {
+            System.out.println("*".repeat(i + 1) + "-".repeat(triangleHeight - (i + 1)));
         }
-
-        return resultArray;
     }
 }
