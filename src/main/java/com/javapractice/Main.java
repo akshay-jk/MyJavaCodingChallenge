@@ -14,8 +14,8 @@ public class Main {
     }
 
     public static void printRightTriangle(int triangleHeight) {
-        for (int i = 0; i < triangleHeight; i++) {
-            System.out.println("*".repeat(i + 1) + "-".repeat(triangleHeight - (i + 1)));
+        for (int i = 1; i <= triangleHeight; i++) {
+            System.out.println("- ".repeat(triangleHeight - i) + "* ".repeat(i));
         }
     }
 }
