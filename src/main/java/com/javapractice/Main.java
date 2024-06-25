@@ -6,20 +6,20 @@ public class Main {
     public static void main(String[] args) {
         Scanner Inp = new Scanner(System.in);
 
-        System.out.print("Enter the height of pyramid\t");
-        int height = Inp.nextInt();
+        System.out.print("Enter the depth of pyramid\t");
+        int depth = Inp.nextInt();
 
-        printPyramid(height);
+        printInvertedPyramid(depth);
 
     }
 
-    public static void printPyramid(int pyramidHeight) {
-        int pyramidWidth = ((2 * pyramidHeight) - 1);
+    public static void printInvertedPyramid(int pyramidDepth) {
+        int pyramidWidth = ((2 * pyramidDepth) - 1);
 
-        for (int i = 0; i < pyramidHeight; i++) {
+        for (int i = 0; i < pyramidDepth; i++) {
             String pyramidLine = "";
 
-            int hyphenCount = (pyramidWidth / 2) - i, starCount = i;
+            int hyphenCount = i, starCount = (pyramidWidth / 2) - i;
 
             pyramidLine += " - ".repeat(hyphenCount);
             pyramidLine += " * ".repeat(starCount);
