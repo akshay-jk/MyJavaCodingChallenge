@@ -9,12 +9,12 @@ public class Main {
         System.out.print("Enter the height of triangle\t");
         int triangleHeight = Inp.nextInt();
 
-        printRightAngledLeftSidedInvertedTriangle(triangleHeight);
+        printRightAngledRightSidedInvertedTriangle(triangleHeight);
     }
 
-    public static void printRightAngledLeftSidedInvertedTriangle(int height) {
+    public static void printRightAngledRightSidedInvertedTriangle(int height) {
         for (int i = 0; i < height; i++) {
-            System.out.println(" * ".repeat(height - i) + " - ".repeat(i));
+            System.out.println(" - ".repeat(i) + " * ".repeat(height - i));
         }
     }
 
