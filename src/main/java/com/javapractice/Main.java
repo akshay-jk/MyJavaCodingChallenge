@@ -6,15 +6,29 @@ public class Main {
     public static void main(String[] args) {
         Scanner Inp = new Scanner(System.in);
 
-        System.out.print("Enter the height of triangle\t");
-        int triangleHeight = Inp.nextInt();
+        System.out.print("Enter the height of pyramid\t");
+        int pyramidHeight = Inp.nextInt();
 
-        printRightAngledRightSidedInvertedTriangle(triangleHeight);
+        printInvertedPyramidMirror(pyramidHeight);
+
     }
 
-    public static void printRightAngledRightSidedInvertedTriangle(int height) {
-        for (int i = 0; i < height; i++) {
-            System.out.println(" - ".repeat(i) + " * ".repeat(height - i));
+    public static void printInvertedPyramidMirror(int pyramidHeight) {
+
+        int Height = pyramidHeight, Width = (Height == 1) ? Height : (2 * Height);
+
+        for (int h = Height; h >= -Height; h--) {
+            String DynamicWidth = "";
+
+            DynamicWidth += " - ".repeat((int) ((Math.floor(Width / 2)) - Math.abs(h)));
+            DynamicWidth += " * ".repeat(Math.abs(h));
+
+            DynamicWidth += " * ";
+
+            DynamicWidth += " * ".repeat(Math.abs(h));
+            DynamicWidth += " - ".repeat((int) (Math.floor(Width / 2)) - Math.abs(h));
+
+            System.out.println(DynamicWidth);
         }
     }
 
