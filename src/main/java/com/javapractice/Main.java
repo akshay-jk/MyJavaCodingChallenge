@@ -6,30 +6,23 @@ public class Main {
     public static void main(String[] args) {
         Scanner Inp = new Scanner(System.in);
 
-        System.out.print("Enter the height of pyramid\t");
-        int pyramidHeight = Inp.nextInt();
+        System.out.print("Enter the size of square\t");
+        int SquareSize = Inp.nextInt();
 
-        printInvertedPyramidMirror(pyramidHeight);
-
+        printSquare(SquareSize);
     }
 
-    public static void printInvertedPyramidMirror(int pyramidHeight) {
-
-        int Height = pyramidHeight, Width = (Height == 1) ? Height : (2 * Height);
-
-        for (int h = Height; h >= -Height; h--) {
-            String DynamicWidth = "";
-
-            DynamicWidth += " - ".repeat((int) ((Math.floor(Width / 2)) - Math.abs(h)));
-            DynamicWidth += " * ".repeat(Math.abs(h));
-
-            DynamicWidth += " * ";
-
-            DynamicWidth += " * ".repeat(Math.abs(h));
-            DynamicWidth += " - ".repeat((int) (Math.floor(Width / 2)) - Math.abs(h));
-
-            System.out.println(DynamicWidth);
+    public static void printSquare(int SquareSize) {
+        for (int i = 0; i < SquareSize; i++) {
+            String Str = "";
+            for (int j = 0; j < SquareSize; j++) {
+                if (i == 0 || i == SquareSize - 1) {
+                    Str += " * ";
+                } else {
+                    Str = (j == 0 || j == SquareSize - 1) ? Str + " * " : Str + " - ";
+                }
+            }
+            System.out.println(Str);
         }
     }
-
 }
