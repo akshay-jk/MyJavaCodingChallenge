@@ -19,19 +19,27 @@ public class Main {
         System.out.print("Enter the key to be searched\t");
         int SearchKey = Inp.nextInt();
 
-        LinearSearch(Arr, SearchKey);
+        BinarySearch(Arr, SearchKey);
+
     }
 
-    public static void LinearSearch(int[] Arr, int SearchKey) {
-        for (int i = 0; i < Arr.length; i++) {
-            if (Arr[i] == SearchKey) {
-                System.out.println("Element found at position " + (i + 1));
+    public static void BinarySearch(int[] arr, int searchKey) {
+        int LowerLimit = 0, UpperLimit = arr.length - 1;
+        while (LowerLimit != UpperLimit) {
+            int MiddleIndex = (int) Math.floor((LowerLimit + UpperLimit) / 2);
+            if (searchKey == arr[MiddleIndex]) {
+                System.out.println("Key present at index " + MiddleIndex);
                 return;
+            } else {
+                if (searchKey > arr[MiddleIndex]) {
+                    LowerLimit = MiddleIndex + 1;
+                } else {
+                    LowerLimit = UpperLimit - 1;
+                }
             }
         }
 
-        System.out.println("Element not found");
+        System.out.println("Key not present");
     }
-
 
 }
