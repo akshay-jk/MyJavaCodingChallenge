@@ -1,5 +1,6 @@
 package com.javapractice;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -13,33 +14,31 @@ public class Main {
 
         System.out.print("Enter the elements of array\t");
         for (int i = 0; i < ArrSize; i++) {
-            Arr[i] = Inp.nextInt();
+            Arr[i] = Integer.parseInt(Inp.next());
         }
 
-        System.out.print("Enter the key to be searched\t");
-        int SearchKey = Inp.nextInt();
-
-        BinarySearch(Arr, SearchKey);
-
+        SelectionSort(Arr);
     }
 
-    public static void BinarySearch(int[] arr, int searchKey) {
-        int LowerLimit = 0, UpperLimit = arr.length - 1;
-        while (LowerLimit != UpperLimit) {
-            int MiddleIndex = (int) Math.floor((LowerLimit + UpperLimit) / 2);
-            if (searchKey == arr[MiddleIndex]) {
-                System.out.println("Key present at index " + MiddleIndex);
-                return;
-            } else {
-                if (searchKey > arr[MiddleIndex]) {
-                    LowerLimit = MiddleIndex + 1;
-                } else {
-                    LowerLimit = UpperLimit - 1;
+    public static void SelectionSort(int[] Arr) {
+        int indexPointer = 0;
+        for (int i = 0; i < Arr.length; i++) {
+            int smallestIntegerIndex = i;
+            for (int j = indexPointer; j < Arr.length; j++) {
+                if (Arr[j] < Arr[smallestIntegerIndex]) {
+                    smallestIntegerIndex = j;
                 }
             }
+
+            if (smallestIntegerIndex != indexPointer) {
+                Arr[indexPointer] = Arr[indexPointer] + Arr[smallestIntegerIndex];
+                Arr[smallestIntegerIndex] = Arr[indexPointer] - Arr[smallestIntegerIndex];
+                Arr[indexPointer] = Arr[indexPointer] - Arr[smallestIntegerIndex];
+            }
+
+            indexPointer += 1;
         }
 
-        System.out.println("Key not present");
+        System.out.println(Arrays.toString(Arr));
     }
-
 }
