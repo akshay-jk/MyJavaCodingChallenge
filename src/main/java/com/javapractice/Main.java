@@ -17,28 +17,20 @@ public class Main {
             Arr[i] = Integer.parseInt(Inp.next());
         }
 
-        SelectionSort(Arr);
+        BubbleSort(Arr);
     }
 
-    public static void SelectionSort(int[] Arr) {
-        int indexPointer = 0;
+    public static void BubbleSort(int[] Arr) {
         for (int i = 0; i < Arr.length; i++) {
-            int smallestIntegerIndex = i;
-            for (int j = indexPointer; j < Arr.length; j++) {
-                if (Arr[j] < Arr[smallestIntegerIndex]) {
-                    smallestIntegerIndex = j;
+            for (int j = 0; j < Arr.length - 1; j++) {
+                if (Arr[j] > Arr[j + 1]) {
+                    Arr[j] = Arr[j] + Arr[j + 1];
+                    Arr[j + 1] = Arr[j] - Arr[j + 1];
+                    Arr[j] = Arr[j] - Arr[j + 1];
                 }
             }
-
-            if (smallestIntegerIndex != indexPointer) {
-                Arr[indexPointer] = Arr[indexPointer] + Arr[smallestIntegerIndex];
-                Arr[smallestIntegerIndex] = Arr[indexPointer] - Arr[smallestIntegerIndex];
-                Arr[indexPointer] = Arr[indexPointer] - Arr[smallestIntegerIndex];
-            }
-
-            indexPointer += 1;
+//            System.out.println(Arrays.toString(Arr));
         }
-
         System.out.println(Arrays.toString(Arr));
     }
 }
