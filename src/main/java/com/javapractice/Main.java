@@ -17,20 +17,23 @@ public class Main {
             Arr[i] = Integer.parseInt(Inp.next());
         }
 
-        BubbleSort(Arr);
+        InsertionSort(Arr);
     }
 
-    public static void BubbleSort(int[] Arr) {
-        for (int i = 0; i < Arr.length; i++) {
-            for (int j = 0; j < Arr.length - 1; j++) {
-                if (Arr[j] > Arr[j + 1]) {
-                    Arr[j] = Arr[j] + Arr[j + 1];
-                    Arr[j + 1] = Arr[j] - Arr[j + 1];
-                    Arr[j] = Arr[j] - Arr[j + 1];
+    public static void InsertionSort(int[] ArrToSort) {
+        for (int i = 1; i < ArrToSort.length; i++) {
+            int ArrPointer = i;
+            while (ArrPointer > 0) {
+                if (ArrToSort[ArrPointer - 1] > ArrToSort[ArrPointer]) {
+                    int SwapVariable = ArrToSort[ArrPointer];
+                    ArrToSort[ArrPointer] = ArrToSort[ArrPointer - 1];
+                    ArrToSort[ArrPointer - 1] = SwapVariable;
+                    ArrPointer = ArrPointer - 1;
+                } else {
+                    break;
                 }
             }
-//            System.out.println(Arrays.toString(Arr));
+            System.out.println(Arrays.toString(ArrToSort));
         }
-        System.out.println(Arrays.toString(Arr));
     }
 }
